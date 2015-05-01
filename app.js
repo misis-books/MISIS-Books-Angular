@@ -12,7 +12,7 @@ app.set('views', __dirname + '/server/views');
 app.set('view engine', 'jade');
 
 /*
- * Указываем обработчик для шаблонов Angular
+ * РЈРєР°Р·С‹РІР°РµРј РѕР±СЂР°Р±РѕС‚С‡РёРє РґР»СЏ С€Р°Р±Р»РѕРЅРѕРІ Angular
 **/
 app.get('/partials/:filename', routes.partials);
 
