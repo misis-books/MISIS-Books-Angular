@@ -1,0 +1,1 @@
+#MISIS Books application based on AngularJS + NodeJS + Express + Jade + SASS.
