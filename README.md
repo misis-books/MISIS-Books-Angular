@@ -20,15 +20,19 @@ npm install grunt-cli -g
 gem install sass
 ```
 ####3. Installation
-#####1. Install required **node** modules
+#####1. Cloning repo
+```
+$ git clone https://github.com/IPRIT/misis-books-angular.git
+```
+#####2. Install required **node** modules
 ```
 npm install
 ```
-#####2. **Bower** modules installation:
+#####3. **Bower** modules installation:
 ```
 bower install
 ```
-#####3. Running **Grunt**
+#####4. Running **Grunt**
 ```
 grunt 
 ```
