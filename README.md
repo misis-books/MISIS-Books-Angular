@@ -1,6 +1,6 @@
 #MISIS Books Angular
 
-###An application based on Node.js + Angular + Angular Material + Express + Jade + Sass and MISIS Books API.
+###An application based on Node.js + Angular + Angular Material + Express + Jade + Sass and [MISIS Books API](http://twosphere.ru/dev).
 
 ### Development environment setup
 ####1. Prerequisites
