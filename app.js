@@ -14,7 +14,7 @@ app.set('view engine', 'jade');
 /*
  * Указываем обработчик для шаблонов Angular
 **/
-app.get('/partials/:filename', routes.partials);
+app.get('/partials\/*:filename', routes.partials);
 
 app.get('/', routes.index);
 
