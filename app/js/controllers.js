@@ -5,7 +5,8 @@
 angular.module('MisisBooksApp.controllers', [
     'MisisBooksApp.i18n'
 ])
-    .controller('PageCtrl', ['$scope', function($scope) {
+    .controller('PageCtrl', ['$scope', '_', function($scope, _) {
+        var defaultTitle = _('index_title_raw');
         $scope.$on('titleChange', function(e, args) {
             $scope.title = args.title !== undefined && args.title.length ? args.title : defaultTitle;
         });
