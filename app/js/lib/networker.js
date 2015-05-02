@@ -2,7 +2,7 @@
 
 angular.module('misisbooks.networker', [])
 
-    .factory('MisisBooksRpc', function($http, $q) {
+    .factory('MisisBooksRpc', ['$http', '$q', function($http, $q) {
         function post(url, data) {
             var deffered = $q.defer();
             $http.post(url, data)
@@ -49,5 +49,5 @@ angular.module('misisbooks.networker', [])
             post: post,
             dataEncode: dataEncode
         }
-    })
+    }])
 ;

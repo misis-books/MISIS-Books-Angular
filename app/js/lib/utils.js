@@ -265,7 +265,7 @@ function listUniqSorted (list) {
 }
 
 function templateUrl (prefix, tplName) {
-    var str = 'app/partials/' + prefix + '/' + tplName + '.html?' + Math.random() * 10000;
+    var str = 'partials/' + prefix + '/' + tplName + '.html';
     console.log(str);
     return str;
 }

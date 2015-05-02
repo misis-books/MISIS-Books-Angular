@@ -2,17 +2,26 @@
 
 /* Controllers */
 
-angular.module('MisisBooksApp.controllers', ['MisisBooksApp.i18n'])
+angular.module('MisisBooksApp.controllers', [
+    'MisisBooksApp.i18n'
+])
+    .controller('PageCtrl', ['$scope', function($scope) {
+        $scope.$on('titleChange', function(e, args) {
+            $scope.title = args.title !== undefined && args.title.length ? args.title : defaultTitle;
+        });
+    }])
 
     .controller('AppCtrl', ['$scope', function($scope) {
         console.log('Works!');
     }])
 
-    .controller('PageCtrl', ['$scope', '_', function($scope, _) {
-        var defaultTitle = _('test_raw');
-        $scope.title = defaultTitle;
-        $scope.$on('titleChange', function(e, args) {
-            $scope.title = args.title !== undefined && args.title.length ? args.title : defaultTitle;
+    .controller('IndexCtrl', ['$scope', '_', 'MisisBooksRpc', function($scope, _, MisisBooksRpc) {
+        $scope.$emit('titleChange', {
+            title: _('index_title_raw')
+        });
+        $scope.test = 1;
+        MisisBooksRpc.get('http://localhost:3000/', {}).then(function(res) {
+            $scope.test++;
         });
     }])
 ;

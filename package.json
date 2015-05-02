@@ -7,7 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
     "predev": "npm install bower -g",
-    "build": "npm install"
+    "build": "npm install",
+    "phantom": "npm install phantomjs -g",
+    "seo": "phantomjs --disk-cache=no app/bower_components/angular-seo/angular-seo-server.js 8888 http://localhost:3000"
   },
   "keywords": [
     "angular",
@@ -26,6 +28,7 @@
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-newer": "^1.1.0",
+    "phantomjs": "^1.9.16",
     "winston": "^1.0.0"
   },
   "dependencies": {

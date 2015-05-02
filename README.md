@@ -14,10 +14,12 @@
 * [Grunt](http://gruntjs.com/) (task automation)
 * [Bower](http://bower.io/) (Web package management)
 * [Sass](http://sass-lang.com/) (css tool)
+* **[Optional]** [PhantomJS](http://phantomjs.org/) (Full web stack on server) (Uses for search crawlers)
 ```
 npm install bower -g
 npm install grunt-cli -g
 gem install sass
+[optional] npm install phantomjs -g
 ```
 ####3. Installation
 #####1. Cloning repo
@@ -35,6 +37,10 @@ bower install
 #####4. Running **Grunt**
 ```
 grunt 
+```
+#####[Optional] 5. Running **PhantomJS Server**
+```
+npm run-script seo
 ```
 ####4. Running application
 To start the web server, run:

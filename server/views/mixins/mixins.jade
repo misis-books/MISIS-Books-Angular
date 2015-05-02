@@ -11,6 +11,3 @@ mixin css(url)
 mixin css_list(urls)
   each url in urls
     +css(url)
-
-mixin link(url, text)
-  a(ng-href=url)&attributes(attributes)= text
