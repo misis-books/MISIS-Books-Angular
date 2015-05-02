@@ -38,7 +38,7 @@ bower install
 ```
 grunt 
 ```
-#####[Optional] 5. Running **PhantomJS Server**
+#####5. [Optional] Running **PhantomJS Server**
 ```
 npm run-script seo
 ```

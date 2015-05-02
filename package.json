@@ -1,6 +1,6 @@
 {
-  "name": "MISIS-Books-AngularJS-NodeJS-Express-Jade-SASS",
-  "version": "0.0.0",
+  "name": "misis-books-angular",
+  "version": "0.0.2",
   "description": "An example of Angular",
   "main": "app.js",
   "scripts": {
