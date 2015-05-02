@@ -1,0 +1,17 @@
+body, html {
+  overflow-x: hidden !important;
+}
+$color: #777;
+
+.error {
+  border: 1px #f01;
+  background-color: #fdd;
+  color: $color
+}
+.error.intrusion {
+  background: #ff2;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}

@@ -1,9 +1,8 @@
 include mixins/mixins
   
 doctype html
-html
+html(ng-controller='PageCtrl', lang='ru')
   head
-    title My app
     include index/head
   body(layout='row', ng-controller='AppCtrl')
     block content

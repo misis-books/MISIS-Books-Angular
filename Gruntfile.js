@@ -7,17 +7,27 @@ module.exports = function(grunt) {
             },
             scripts: {
                 files: [
-                    'app/js/*.js'
+                    'app/js/**/*.js'
                 ],
                 tasks: [
                     'process'
+                ]
+            },
+            css: {
+                files: [
+                    'app/sass/*.scss'
+                ],
+                tasks: [
+                    'sass-compile'
                 ]
             }
         },
         concat: {
             dist: {
-                src: [ 'app/js/*.js' ],
-                dest: 'app/js/prod/build.js'
+                src: [
+                    'app/js/**/*.js'
+                ],
+                dest: 'app/prod/js/build.js'
             }
         },
         uglify: {
@@ -26,7 +36,7 @@ module.exports = function(grunt) {
                     banner: '/*!\n * <%= pkg.name %> \n * v<%= pkg.version %> - ' +
                      '<%= grunt.template.today("yyyy-mm-dd") %> \n * Copyright (c) <%= pkg.author %>\n**/',
                     sourceMap: true,
-                    sourceMapName: 'app/js/prod/build.min.js.map',
+                    sourceMapName: 'app/prod/js/build.min.js.map',
                     booleans: true,
                     comparisons: true,
                     conditionals: true,
@@ -34,19 +44,23 @@ module.exports = function(grunt) {
                     join_vars: true
                 },
                 files: {
-                    'app/js/prod/build.min.js': [
-                        'app/js/prod/build.js'
+                    'app/prod/js/build.min.js': [
+                        'app/prod/js/build.js'
                     ]
                 }
             }
         },
         sass: {
             options: {
-                sourceMap: true
+                sourcemap: 'auto',
+                noCache: true,
+                style: 'expanded'
             },
             dist: {
                 files: {
-                    'main.css': 'main.scss'
+                    'app/prod/css/style.css': [
+                        'app/sass/style.scss'
+                    ]
                 }
             }
         }
@@ -54,12 +68,20 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-newer');
 
     grunt.registerTask('process', [
         'newer:concat', 'uglify'
     ]);
-    grunt.registerTask('default', [
-        'concat', 'uglify', 'watch'
+    grunt.registerTask('sass-compile', [
+        'newer:sass'
     ]);
+    grunt.registerTask('default', [
+        'concat', 'uglify', 'sass', 'watch'
+    ]);
+
+    grunt.event.on('watch', function(action, filepath, target) {
+        grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
+    });
 };
