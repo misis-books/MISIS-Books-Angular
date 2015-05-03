@@ -50,16 +50,16 @@ Config.I18n = {
 
 Config.MaterialTheme = {
     primaryPalette: {
-        theme: 'blue',
+        theme: 'red',
         settings: {
             'default': '500',
-            'hue-1': '300',
+            'hue-1': '400',
             'hue-2': '600',
-            'hue-3': 'A100'
+            'hue-3': 'A400'
         }
     },
     accentPalette: {
-        theme: 'pink',
+        theme: 'blue',
         settings: {
             'default': '500'
         }

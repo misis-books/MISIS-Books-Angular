@@ -1,7 +1,7 @@
 extends ../_layout
 
 block content
-  div.content(ng-view)
+  div.content(ng-view, layout='row', layout-fill, flex)
 
   +js_list([
     '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',

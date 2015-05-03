@@ -29,6 +29,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-newer": "^1.1.0",
     "phantomjs": "^1.9.16",
+    "psi": "^1.0.6",
     "winston": "^1.0.0"
   },
   "dependencies": {

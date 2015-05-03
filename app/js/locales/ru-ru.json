@@ -1,5 +1,7 @@
 {
     "test": "i18n работает",
     "index_title": "MISIS Books Angular — Быстрый доступ к электронной библиотеки «НИТУ МИСиС»",
-    "login_title": "Авторизация MISIS Books Angular"
+    "login_title": "Авторизация MISIS Books Angular",
+    "search_tab_title": "Поиск",
+    "fave_tab_title": "Избранное"
 }
