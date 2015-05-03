@@ -1,4 +1,5 @@
 #MISIS Books Angular
+![MISIS Books logo](http://cs624029.vk.me/v624029446/2db97/VjlKJZLSRZ0.jpg)
 
 ###An application based on [Nodejs](http://nodejs.org/) + [Angular](http://angularjs.org/) + [Angular Material](http://material.angularjs.org/) + [Express](http://expressjs.com/) + [Jade](http://jade-lang.com/) + [Sass](http://sass-lang.com/) and [MISIS Books API](http://twosphere.ru/dev).
 
