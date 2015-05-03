@@ -5,7 +5,7 @@ Config.App = {
     hash: '8da85b0d5bfe62527e5b244c209159c3',
     version: '0.0.1',
     domains: [
-        'localhost'
+        'localhost:3000'
     ],
     current_domain: 0
 };
@@ -117,10 +117,7 @@ Config.LangCountries = {"es": "ES", "ru": "RU", "en": "US", "de": "DE", "it": "I
 
         for (i = 0; i < keys.length; i++) {
             key = keys[i] = prefix + keys[i];
-            if (key.substr(0, 3) != 'xt_' && cache[key] !== undefined) {
-                result.push(cache[key]);
-            }
-            else if (useLs) {
+            if (useLs) {
                 try {
                     value = localStorage.getItem(key);
                 } catch (e) {

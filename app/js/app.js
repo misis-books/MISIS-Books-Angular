@@ -22,10 +22,6 @@ angular.module('MisisBooksApp', [
                 templateUrl: templateUrl('index', 'main'),
                 controller: 'IndexCtrl'
             })
-            .when('/login', {
-                templateUrl: templateUrl('login', 'main'),
-                controller: 'LoginCtrl'
-            })
             .otherwise({redirectTo: '/'});
 
         $mdThemingProvider.theme('default')

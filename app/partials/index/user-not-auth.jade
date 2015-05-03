@@ -1,0 +1,10 @@
+md-content.user-not-authed.md-padding(layout='row', layout-align='center center')
+  div.user-not-authed__layer
+    div.user-not-authed__layer__img
+      img(src='img/preview-misis-books-4_0_stroke.png')
+    div.user-not-authed__layer__description
+      span
+        my-i18n(msgid='user_not_authed_description')
+    div.user-not-authed__layer__controls
+      md-button.md-accent.md-hue-2(ng-click='startAuth()')
+        my-i18n(msgid='user_start_auth')

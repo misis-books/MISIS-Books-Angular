@@ -17,15 +17,12 @@ app.set('view engine', 'jade');
 app.get('/partials\/*:filename', routes.partials);
 
 app.get('/', routes.index);
+app.post('/api/:method', routes.api);
+app.get('/oauth/:service', routes.oauth);
 
 app.listen(config.server.port, function() {
     console.log('Express server listening on port ' + config.server.port);
 });
 
-/*var psi = require('psi');
-psi('app', function (err, data) {
-    console.log(data.score);
-    console.log(data.pageStats);
-});*/
 
 //http://localhost:8888/?_escaped_fragment_=/

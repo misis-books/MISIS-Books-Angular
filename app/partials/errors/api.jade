@@ -1,0 +1,40 @@
+div.error-modal
+  div.error-modal__title(ng-switch='error_code')
+    div(ng-switch-when='2')
+      h3
+        my-i18n(msgid='error_user_no_subscription_title')
+      div.error-modal__content
+        my-i18n(msgid='error_user_no_subscription_message')
+
+    div(ng-switch-when='3')
+      h3
+        my-i18n(msgid='error_too_many_requests_title')
+      div.error-modal__content
+        my-i18n(msgid='error_too_many_requests_message')
+
+    div(ng-switch-when='4')
+      h3
+        my-i18n(msgid='error_invalid_access_token_title')
+      div.error-modal__content
+        my-i18n(msgid='error_invalid_access_token_message')
+
+    div(ng-switch-when='5')
+      h3
+        my-i18n(msgid='error_missing_access_token_title')
+      div.error-modal__content
+        my-i18n(msgid='error_missing_access_token_message')
+
+    div(ng-switch-when='6')
+      h3
+        my-i18n(msgid='error_invalid_vk_access_token_title')
+      div.error-modal__content
+        my-i18n(msgid='error_invalid_vk_access_token_message')
+
+    div(ng-switch-when='7')
+      h3
+        my-i18n(msgid='error_too_many_creation_token_title')
+      div.error-modal__content
+        my-i18n(msgid='error_too_many_creation_token_message')
+  div.error-modal__controls(layout='row', layout-align='end center')
+    md-button.md-primary(ng-click='close()')
+      my-i18n(msgid='error_modal_close')

@@ -73,3 +73,96 @@ md-content {
 [md-dynamic-height] {
   @include transition(all .2s ease)
 }
+.user-not-authed {
+  padding: 20px;
+  .user-not-authed__layer {
+    width: 300px;
+    .user-not-authed__layer__img {
+      width: 90%;
+      text-align: center;
+      margin: auto;
+      img {
+        width: 100%;
+      }
+    }
+    .user-not-authed__layer__description {
+      text-align: center;
+      padding: 10px 0;
+      span {
+        font: {
+          size: 1.5em;
+        }
+        color: #777;
+      }
+    }
+    .user-not-authed__layer__controls {
+      @extend .user-not-authed__layer__description;
+      .md-button {
+        padding: 10px 14px;
+      }
+    }
+  }
+}
+
+.error-modal {
+  background: #fff;
+  border-radius: 3px;
+  .error-modal__title {
+    padding: 15px;
+  }
+  .error-modal__content {
+    padding: 15px;
+    color: #777;
+  }
+  .error-modal__controls {
+    padding: 15px;
+  }
+}
+
+.not-faved {
+  color: #999999;
+}
+.faved {
+  color: #fb5748;
+}
+.md-subheader {
+  background-color: transparent !important;
+}
+.edition-item__link {
+  font-size: inherit;
+  height: inherit;
+  text-align: left;
+  text-transform: none;
+  width: 100%;
+  white-space: normal;
+  display: block;
+  background: #fff;
+}
+.edition-item__link__name {
+  padding: 15px 25px;
+  display: block;
+}
+.editions-result {
+  background: #fff !important;
+}
+.edition {
+  text-align: left;
+  text-transform: none;
+  white-space: normal;
+  display: block;
+  padding: 18px;
+  position: relative;
+}
+.edition-fave {
+  position: absolute;
+  right: 20px;
+  top: 11px;
+  z-index: 100;
+}
+.search-content__input {
+  padding: 10px 24px 24px;
+  background: #fff;
+}
+.edition-item {
+  position: relative;
+}

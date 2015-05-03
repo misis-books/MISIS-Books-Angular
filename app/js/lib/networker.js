@@ -2,33 +2,40 @@
 
 angular.module('misisbooks.networker', [])
 
-    .factory('MisisBooksRpc', ['$http', '$q', function($http, $q) {
-        function post(url, data) {
-            var deffered = $q.defer();
-            $http.post(url, data)
-                .success(function (data, status, headers, config) {
-                    deffered.resolve(data);
-                })
-                .error(function(data, status, headers, config) {
-                    deffered.reject(data);
-                });
+    .factory('MisisBooksRpc', ['$http', '$q', 'Storage', function($http, $q, Storage) {
+        var mbToken;
 
-            return deffered.promise;
+        function post(url, data) {
+            var deferred = $q.defer();
+            Storage.get('mb_access_token').then(function(token) {
+                mbToken = token;
+                data.access_token = mbToken;
+                console.log(data);
+                $http.post(url, data).success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).error(function(data, status, headers, config) {
+                    deferred.reject(data);
+                });
+            });
+
+            return deferred.promise;
         }
 
         function get(url, data) {
-            var resultUrl = url + '?' + dataEncode(data),
-                deffered = $q.defer();
+            var deferred = $q.defer();
 
-            $http.get(resultUrl)
-                .success(function (data, status, headers, config) {
-                    deffered.resolve(data);
-                })
-                .error(function(data, status, headers, config) {
-                    deffered.reject(data);
+            Storage.get('mb_access_token').then(function(token) {
+                mbToken = token;
+                data.access_token = mbToken;
+                var resultUrl = url + '?' + dataEncode(data);
+                $http.get(resultUrl).success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).error(function(data, status, headers, config) {
+                    deferred.reject(data);
                 });
+            });
 
-            return deffered.promise;
+            return deferred.promise;
         }
 
         function dataEncode(data) {
@@ -38,7 +45,7 @@ angular.module('misisbooks.networker', [])
                     data.hasOwnProperty(el) && (resultString += "&" + el.toString() + "=" + encodeURIComponent(data[el]));
                 }
                 if ('&' == resultString.charAt(0)) {
-                    return resultString.substring(1, resultString.length);
+                    return resultString.slice(0, -1);
                 }
             }
             return resultString;

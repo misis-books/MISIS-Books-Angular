@@ -33,6 +33,7 @@
     "winston": "^1.0.0"
   },
   "dependencies": {
+    "bl": "^0.9.4",
     "express": "^4.12.3",
     "jade": "^1.9.2"
   }
