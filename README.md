@@ -1,7 +1,9 @@
-#MISIS Books Angular [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
-![MISIS Books logo](http://cs624029.vk.me/v624029446/2db97/VjlKJZLSRZ0.jpg)
+#MISIS Books Angular 
+[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) [![NPM](https://img.shields.io/badge/npm-2.9.0-green.svg)](http://npmjs.com)
 
-![NPM](https://img.shields.io/badge/npm-2.9.0-green.svg)
+----------
+
+![MISIS Books logo](http://cs624029.vk.me/v624029446/2db97/VjlKJZLSRZ0.jpg)
 
 ###An application based on [Nodejs](http://nodejs.org/) + [Angular](http://angularjs.org/) + [Angular Material](http://material.angularjs.org/) + [Express](http://expressjs.com/) + [Jade](http://jade-lang.com/) + [Sass](http://sass-lang.com/) + [Grunt](http://gruntjs.com/) and [MISIS Books API](http://twosphere.ru/dev).
 
