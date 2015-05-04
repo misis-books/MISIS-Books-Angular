@@ -150,11 +150,11 @@ md-content {
 .edition {
   text-align: left;
   text-transform: none;
-  white-space: normal;
   display: block;
   padding: 22px 18px;
   position: relative;
   width: 100%;
+  white-space: nowrap;
 }
 .search-content__input {
   padding: 10px 24px 24px;
@@ -240,6 +240,7 @@ md-content {
 }
 .edition__name {
   margin-left: 18px;
+  white-space: normal;
 }
 .edition__fave {
   float: right;
