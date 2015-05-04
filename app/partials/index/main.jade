@@ -2,10 +2,10 @@ include ../mixins/mixins
 
 div(layout='column', flex)
   include toolbar
-  md-content(md-scroll-y, flex)
-    div.content-inner
-      md-content.content-inner__tabs(style='margin-bottom: 20px;')
-        md-tabs(md-dynamic-height, md-border-bottom, md-selected='selectedTabIndex')
+  md-content(md-scroll-y, flex, layout='column')
+    div.content-inner(layout-fill, flex, layout='column')
+      md-content.content-inner__tabs(style='margin-bottom: 20px;', flex, layout='column')
+        md-tabs(md-dynamic-height, md-border-bottom, md-selected='selectedTabIndex', layout-fill)
           md-tab(label='{{"search_tab_title" | i18n}}')
             md-content
               include search-content
