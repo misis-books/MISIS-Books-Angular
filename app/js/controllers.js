@@ -28,7 +28,7 @@ angular.module('MisisBooksApp.controllers', [
         $scope.selectedTabIndex = 0;
         $scope.$watch('selectedTabIndex', function(val) {
             if (val == 1) {
-                $scope.$broadcast('fave-tab-clicked');
+                $scope.$broadcast('fave-update-needed');
             } else if (!$scope.isAuth) {
                 $scope.$broadcast('onExitFromApp');
             }
@@ -79,10 +79,32 @@ angular.module('MisisBooksApp.controllers', [
                         $scope.$broadcast('onExitFromApp');
                     });
                 });
-        }
+        };
+
+        $scope.selectedLanguage = Config.I18n.locale;
+        $scope.languages = [];
+        (function fillLocales(langs, arr) {
+            for (var el = 0; el < arr.length; ++el) {
+                $scope.languages.push({
+                    value: arr[el],
+                    name: langs[arr[el]],
+                    selected: arr[el] == $scope.selectedLanguage
+                });
+            }
+        })(Config.I18n.languages, Config.I18n.supported);
+
+        $scope.$watch('selectedLanguage', function(locale) {
+            Storage.set({
+                i18n_locale: locale
+            }).then(function() {
+                if (Config.I18n.locale !== locale) {
+                    window.location.reload();
+                }
+            });
+        });
     }])
 
-    .controller('SearchCtrl', ['$scope', '_', 'UserManager', 'MisisBooksApi', function($scope, _, UserManager, MisisBooksApi) {
+    .controller('SearchCtrl', ['$scope', '$rootScope', '_', 'UserManager', 'MisisBooksApi', '$mdBottomSheet', 'Storage', function($scope, $rootScope, _, UserManager, MisisBooksApi, $mdBottomSheet, Storage) {
         $scope.search = {
             q: '',
             category: 1,
@@ -138,13 +160,66 @@ angular.module('MisisBooksApp.controllers', [
                 $scope.search.found_editions = response.response.items;
             });
         });
+
+        $scope.editionClick = function(event, edition_id, index) {
+            var edition = $scope.search.found_editions[index];
+            Storage.get('mb_access_token').then(function(mbToken) {
+                if (!mbToken) {
+                    return;
+                }
+                $mdBottomSheet.show({
+                    templateUrl: templateUrl('index', 'bottom-sheet-edition'),
+                    controller: ['$scope', 'edition', 'mbToken', function($scope, edition, mbToken) {
+                        $scope.edition = edition;
+                        $scope.mbToken = mbToken;
+                        $scope.toggleFavorite = function(event) {
+                            var edition_id = $scope.edition.id,
+                                isFave = $scope.edition.fave;
+                            if (isFave) {
+                                MisisBooksApi.fave.deleteDocument({
+                                    edition_id: edition_id
+                                }).then(function(response) {
+                                    if (response.response && response.response.result) {
+                                        edition.fave = false;
+                                    }
+                                });
+                            } else {
+                                MisisBooksApi.fave.addDocument({
+                                    edition_id: edition_id
+                                }).then(function(response) {
+                                    if (response.response && response.response.result) {
+                                        edition.fave = true;
+                                    }
+                                });
+                            }
+                            $mdBottomSheet.hide();
+                        };
+                    }],
+                    parent: '#content',
+                    targetEvent: event,
+                    locals: {
+                        edition: edition,
+                        mbToken: mbToken
+                    }
+                });
+            });
+        };
+
+        $rootScope.$on('fave_toggled', function(e, params) {
+            var editions = $scope.search.found_editions, el;
+            for (el = 0; el < editions.length; ++el) {
+                if (editions[el].id === params.edition_id) {
+                    editions[el].fave = params.fave;
+                }
+            }
+        });
     }])
 
-    .controller('FaveCtrl', ['$scope', '_', 'UserManager', 'MisisBooksApi', function($scope, _, UserManager, MisisBooksApi) {
+    .controller('FaveCtrl', ['$scope', '$rootScope', '_', 'UserManager', 'MisisBooksApi', '$mdBottomSheet', 'Storage', function($scope, $rootScope, _, UserManager, MisisBooksApi, $mdBottomSheet, Storage) {
 
         $scope.faves = [];
 
-        $scope.$on('fave-tab-clicked', function() {
+        $scope.$on('fave-update-needed', function() {
             MisisBooksApi.fave.getDocuments({
                 count: 20,
                 offset: 0,
@@ -154,6 +229,61 @@ angular.module('MisisBooksApp.controllers', [
                 $scope.faves = response.response.items;
             });
         });
+
+        $scope.editionClick = function(event, edition_id, index) {
+            var faves = $scope.faves,
+                edition = faves[index];
+
+            Storage.get('mb_access_token').then(function(mbToken) {
+                if (!mbToken) {
+                    return;
+                }
+                $mdBottomSheet.show({
+                    templateUrl: templateUrl('index', 'bottom-sheet-edition'),
+                    controller: ['$scope', 'edition', 'mbToken', function($scope, edition, mbToken) {
+                        $scope.edition = edition;
+                        $scope.mbToken = mbToken;
+                        $scope.toggleFavorite = function(event) {
+                            var edition_id = $scope.edition.id,
+                                isFave = $scope.edition.fave;
+                            if (isFave) {
+                                MisisBooksApi.fave.deleteDocument({
+                                    edition_id: edition_id
+                                }).then(function(response) {
+                                    if (response.response && response.response.result) {
+                                        edition.fave = false;
+                                        $rootScope.$broadcast('fave_toggled', {
+                                            edition_id: edition_id,
+                                            fave: edition.fave
+                                        });
+                                        faves.splice(index, 1);
+                                    }
+                                });
+                            } else {
+                                MisisBooksApi.fave.addDocument({
+                                    edition_id: edition_id
+                                }).then(function(response) {
+                                    if (response.response && response.response.result) {
+                                        edition.fave = true;
+                                        $rootScope.$broadcast('fave_toggled', {
+                                            edition_id: edition_id,
+                                            fave: edition.fave
+                                        });
+                                    }
+                                });
+                            }
+                            $mdBottomSheet.hide();
+                        };
+                    }],
+                    parent: '#content',
+                    targetEvent: event,
+                    locals: {
+                        edition: edition,
+                        mbToken: mbToken
+                    }
+                });
+            });
+        };
     }])
 
     .controller('ErrorCtrl', ['$scope', 'error_code', '$mdDialog', function($scope, error_code, $mdDialog) {

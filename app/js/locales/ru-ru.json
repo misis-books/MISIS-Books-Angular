@@ -1,6 +1,6 @@
 {
   "test": "i18n работает",
-  "app_name": "MISIS Books Angular",
+  "app_name": "MISIS Books",
   "index_title": "MISIS Books Angular — Быстрый доступ к электронной библиотеки «НИТУ МИСиС»",
   "login_title": "Авторизация MISIS Books Angular",
   "search_tab_title": "Поиск",
@@ -9,5 +9,14 @@
   "user_start_auth": "Авторизоваться через ВК",
   "window_auth_title": "Авторизация MISIS Books",
   "search_input_label": "Поиск",
-  "error_modal_close": "Закрыть"
+  "error_modal_close": "Закрыть",
+  "popular_for_week_title": "Популярное за неделю",
+  "search_results_title": "Результаты поиска",
+  "edition_bottom_sheet_title": "Выберите действие для",
+  "edition_bottom_sheet_download": "Загрузить",
+  "edition_bottom_sheet_fave_remove": "Удалить из избранного",
+  "edition_bottom_sheet_fave_add": "Добавить в избранное",
+  "faves_not_found": "Нет элементов",
+  "select_language": "Язык",
+  "search_not_found": "Ничего не найдено"
 }

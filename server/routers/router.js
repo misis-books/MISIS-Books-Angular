@@ -25,7 +25,7 @@ module.exports = {
                     var responseCode = req.query.code,
                         urlForAccessToken = 'https://oauth.vk.com/access_token?';
                     var params = {
-                        redirect_uri: 'http://' + req.headers.host + '/oauth/vk',
+                        redirect_uri: 'http://' + config.server.domains[config.server.cur_domain] + '/oauth/vk',
                         client_id: config.vkOauth.clientId,
                         client_secret: config.vkOauth.clientSecret,
                         code: responseCode
@@ -40,7 +40,7 @@ module.exports = {
                     http.get(urlForAccessToken, function(err, response) {
                         if (err) throw err;
                         var jsonResponse = JSON.parse(response);
-                        console.log('[Vk auth success]', jsonResponse.access_token);
+                        console.log('[Vk auth success]', jsonResponse);
 
                         var misisBooksAuthUrl = 'http://twosphere.ru/api/auth.signin?vk_access_token='
                             + jsonResponse.access_token;
@@ -92,7 +92,6 @@ module.exports = {
         function sendApiRequest(params) {
             var apiMethod = req.params.method,
                 apiUrl = 'http://twosphere.ru/api/' + apiMethod;
-
             var dataEncode = function(data) {
                 if (data) {
                     var pairs = [];
@@ -104,6 +103,7 @@ module.exports = {
                 return pairs.join('&');
             };
             apiUrl += '?' + dataEncode(params);
+            console.log(apiUrl);
             http.get(apiUrl, function(err, response) {
                 if (err) throw err;
                 var jsonResponse = JSON.parse(response);

@@ -5,11 +5,15 @@ div.search-content(ng-switch='isAuth', ng-controller='FaveCtrl')
         md-subheader.md-no-sticky
           my-i18n(msgid='fave_tab_title')
         md-list-item.edition-item(ng-repeat='edition in faves')
-          md-button.edition(ng-href='{{edition.download_url}}', target='_blank', aria-label='Edition')
+          md-button.edition(ng-click='editionClick($event, edition.id, $index)', aria-label='Edition')
+            div.edition__category
+              div.edition__category__circle(ng-class='"category-" + edition.category.id')
             div.edition__name
               span {{edition.name}}
-            md-button.edition-fave(onclick='alert("Добавлено в избранное"); return false;')
-              md-icon(ng-class='{"faved": edition.fave, "not-faved": !edition.fave}', md-svg-icon='img/icons/ic_star_rate_48px.svg', aria-label='Fave')
+            div.edition__fave(ng-class='{"faved": edition.fave, "not-faved": !edition.fave}')
+              md-icon(aria-label='Fave icon', md-svg-icon='img/icons/ic_star_rate_24px.svg')
 
   div.search-content__inner(ng-switch-default)
     include user-not-auth
+  div(ng-if='!faves.length')
+    include no-faves

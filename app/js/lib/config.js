@@ -5,7 +5,8 @@ Config.App = {
     hash: '8da85b0d5bfe62527e5b244c209159c3',
     version: '0.0.1',
     domains: [
-        'localhost:3000'
+        'localhost:3000',
+        'misis-books-angular-ipritoflex.c9.io'
     ],
     current_domain: 0
 };
@@ -31,18 +32,22 @@ Config.Navigator = {
 };
 
 Config.I18n = {
-    locale: 'ru-ru',
+    locale: 'en-us',
     supported: [
-        "ru-ru"
+        "ru-ru",
+        'en-us'
     ],
     languages: {
-        'ru-ru': 'Русский'
+        'ru-ru': 'Русский',
+        'en-us': 'English'
     },
     aliases: {
-        'ru': 'ru-ru'
+        'ru': 'ru-ru',
+        'en': 'en-us'
     },
     aliases_back: {
-        'ru-ru': 'ru'
+        'ru-ru': 'ru',
+        'en-us': 'en'
     },
     messages: {},
     fallback_messages: {}

@@ -10,7 +10,6 @@ angular.module('misisbooks.networker', [])
             Storage.get('mb_access_token').then(function(token) {
                 mbToken = token;
                 data.access_token = mbToken;
-                console.log(data);
                 $http.post(url, data).success(function (data, status, headers, config) {
                     deferred.resolve(data);
                 }).error(function(data, status, headers, config) {

@@ -4,7 +4,7 @@ div(layout='column', flex)
   include toolbar
   md-content(md-scroll-y, flex, layout='column')
     div.content-inner(layout-fill, flex, layout='column')
-      md-content.content-inner__tabs(style='margin-bottom: 20px;', flex, layout='column')
+      md-content.content-inner__tabs#content(style='margin-bottom: 10px;', flex, layout='column')
         md-tabs(md-dynamic-height, md-border-bottom, md-selected='selectedTabIndex', layout-fill)
           md-tab(label='{{"search_tab_title" | i18n}}')
             md-content
@@ -13,3 +13,6 @@ div(layout='column', flex)
           md-tab(label='{{"fave_tab_title" | i18n}}', ng-disabled='!isAuth')
             md-content
               include fave-content
+      md-content.select-language__layer(layout-align='center center', layout='row', style='margin-bottom: 20px;')
+        md-select(placeholder='{{"select_language" | i18n}}', ng-model='selectedLanguage')
+          md-option(ng-repeat='lang in languages', ng-value='lang.value', ng-selected='lang.selected') {{lang.name}}

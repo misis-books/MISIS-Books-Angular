@@ -1,0 +1,22 @@
+{
+  "test": "i18n is working",
+  "app_name": "MISIS Books",
+  "index_title": "MISIS Books Angular — Quick access to the library MISIS",
+  "login_title": "Auth MISIS Books Angular",
+  "search_tab_title": "Search",
+  "fave_tab_title": "Favorites",
+  "user_not_authed_description": "Sign in to start using MISIS Books",
+  "user_start_auth": "Sign in via VK",
+  "window_auth_title": "Authorization MISIS Books",
+  "search_input_label": "Search",
+  "error_modal_close": "Close",
+  "popular_for_week_title": "Popular materials this week",
+  "search_results_title": "Search results",
+  "edition_bottom_sheet_title": "Select action for",
+  "edition_bottom_sheet_download": "Download",
+  "edition_bottom_sheet_fave_remove": "Remove from Favorites",
+  "edition_bottom_sheet_fave_add": "Add to Favorites",
+  "faves_not_found": "No elements",
+  "select_language": "Language",
+  "search_not_found": "Elements not found"
+}

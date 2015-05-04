@@ -57,6 +57,8 @@ md-content {
 
 .content-inner__tabs {
   background-color: transparent !important;
+  margin-bottom: 20px;
+  box-shadow: 0 0 2px -1px rgba(0, 0, 0, 0.64);
   md-tabs {
     background: #f6f6f6;
     border: 1px solid #e1e1e1;
@@ -150,14 +152,9 @@ md-content {
   text-transform: none;
   white-space: normal;
   display: block;
-  padding: 18px;
+  padding: 22px 18px;
   position: relative;
-}
-.edition-fave {
-  position: absolute;
-  right: 20px;
-  top: 11px;
-  z-index: 100;
+  width: 100%;
 }
 .search-content__input {
   padding: 10px 24px 24px;
@@ -165,4 +162,88 @@ md-content {
 }
 .edition-item {
   position: relative;
+}
+.bottom-sheet__edition {
+  md-list-item {
+    display: block;
+    margin-bottom: 7px;
+    a {
+      display: inline-block;
+    }
+  }
+  .md-inline-list-icon-label {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: -10px;
+    height: 24px;
+    vertical-align: middle;
+    padding-top: 7px;
+  }
+}
+.edition__category {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: top;
+  .edition__category__circle {
+    height: 100%;
+    border-radius: 50%;
+    width: 100%;
+  }
+  .category-2 {
+    background-color: #4ABFB4;
+  }
+  .category-2 .search-result__category-name {
+    color: #4ABFB4
+  }
+  .category-3 {
+    background-color: #FD5559;
+  }
+  .category-3 .search-result__category-name {
+    color: #FD5559;
+  }
+  .category-4 {
+    background-color: #B8914E;
+  }
+  .category-4 .search-result__category-name {
+    color: #B8914E;
+  }
+  .category-5 {
+    background-color: #B3C833;
+  }
+  .category-5 .search-result__category-name {
+    color: #B3C833;
+  }
+  .category-6 {
+    background-color: #9B59B6;
+  }
+  .category-6 .search-result__category-name {
+    color: #9B59B6;
+  }
+  .category-7 {
+    background-color: #FF9100;
+  }
+  .category-7 .search-result__category-name {
+    color: #FF9100;
+  }
+  .category-8 {
+    background-color: #2ECC71;
+  }
+  .category-8 .search-result__category-name {
+    color: #2ECC71;
+  }
+}
+.edition__name, .edition__fave {
+  display: inline-block;
+  vertical-align: top;
+}
+.edition__name {
+  margin-left: 18px;
+}
+.edition__fave {
+  float: right;
+}
+md-select-menu {
+  background: #fff !important;
 }

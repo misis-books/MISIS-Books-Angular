@@ -1,0 +1,14 @@
+md-bottom-sheet.md-list.md-has-header
+  md-subheader {{"edition_bottom_sheet_title" | i18n}} «{{edition.name}}»
+  md-list.bottom-sheet__edition
+    md-list-item
+      md-button.md-list-item-content(aria-label='Download', ng-href='{{edition.download_url + "&access_token=" + mbToken}}', target='_blank')
+        md-icon(md-svg-src='img/icons/ic_get_app_48px.svg')
+        span.md-inline-list-icon-label
+          my-i18n(msgid='edition_bottom_sheet_download')
+    md-list-item
+      md-button.md-list-item-content(aria-label='Fave action', ng-click='toggleFavorite($event)')
+        md-icon(md-svg-src='img/icons/ic_star_rate_48px.svg', ng-class='{"faved": edition.fave}')
+        span.md-inline-list-icon-label(ng-switch='edition.fave')
+          my-i18n(msgid='edition_bottom_sheet_fave_remove', ng-switch-when='true')
+          my-i18n(msgid='edition_bottom_sheet_fave_add', ng-switch-default)

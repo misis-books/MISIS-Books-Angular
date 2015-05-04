@@ -9,7 +9,7 @@ function initApplication () {
     $(document.body).addClass(classes.join(' '));
 
     ConfigStorage.get('i18n_locale', function (params) {
-        var locale = params[0],
+        var locale = params,
             defaultLocale = Config.I18n.locale,
             bootReady = {
                 dom: false,
@@ -31,10 +31,8 @@ function initApplication () {
                 }
             };
 
-
         if (!locale) {
-            locale = (navigator.language || '').toLowerCase();
-            locale = Config.I18n.aliases[locale] || locale;
+            locale = defaultLocale
         }
         for (var i = 0; i < Config.I18n.supported.length; i++) {
             if (Config.I18n.supported[i] == locale) {
@@ -42,7 +40,7 @@ function initApplication () {
                 break;
             }
         }
-        bootReady.i18n_ng = Config.I18n.locale == defaultLocale; // Already included
+        bootReady.i18n_ng = true;//Config.I18n.locale == defaultLocale; // Already included
 
         $.getJSON('/js/locales/' + Config.I18n.locale + '.json').success(function (json) {
             Config.I18n.messages = json;
