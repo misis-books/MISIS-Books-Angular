@@ -1,6 +1,6 @@
 {
   "name": "misis-books-angular",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An example of Angular",
   "main": "app.js",
   "scripts": {
